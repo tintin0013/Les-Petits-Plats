@@ -1,13 +1,79 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <meta name="description" content=" Site de recettes de cuisine">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/edabc93252.js" crossorigin="anonymous"></script>
+    <title>Les Petits Plats</title>
 </head>
+
 <body>
-    
+    <!-- Header -->
+    <header>
+        <img src="assets/logo.png" alt="Logo Les Petits Plats">
+    </header>
+
+    <!-- Formulaire de recherche -->
+    <div>
+        <form class="form">
+            <div class="searchbar">
+                <input type="text" name="search" id="search"
+                    placeholder="Rechercher une recette">
+                <button type="submit" class="searchbar-button"><i class="fas fa-2x fa-search"></i></button>
+            </div>
+
+            <div class="search-list">
+                <div id="filters">
+
+                </div>
+
+                <!-- Cards de recherche -->
+                <div class="cards">
+
+                    <!-- Ingrédients -->
+                    <div class="search-card blue">
+                        <div class="search-input">
+                            <input type="text" name="ingredients" id="ingredients" placeholder="Ingrédients">
+                            <div class="button-search-card">
+                                <i class="fas fa-chevron-down" id="ingredients-chevron"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Appareils -->
+                    <div class="search-card green">
+                        <div class="search-input">
+                            <input type="text" name="appareil" id="appareil" placeholder="Appareils">
+                            <div class="button-search-card">
+                                <i class="fas fa-chevron-down" id="appliances-chevron"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ustensiles -->
+                    <div class="search-card red">
+                        <div class="search-input">
+                            <input type="text" name="ustensiles" id="ustensiles" placeholder="Ustensiles">
+                            <div class="button-search-card">
+                                <i class="fas fa-chevron-down" id="ustensils-chevron"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Recettes -->
+    <div class="recipes" id="recipes-container">
+
+    </div>
+
 </body>
+
 </html>
