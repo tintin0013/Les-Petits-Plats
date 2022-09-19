@@ -101,7 +101,7 @@ function addIngredientsList(array) {
     (e, i) => ingredientsArray.indexOf(e) == i
   ); // Supprime les doublons
   ingredientsHTMLString = ingredientsArray.join(""); // Renvoie une chaîne de caractères à partir du tableau
-  ingredientsUl.innerHTML = ingredientsHTMLString.toLowerCase() || "";
+  ingredientsUl.innerHTML = ingredientsHTMLString || "";
   addFilteredIngredient(); // Affiche un ingrédient lorsque l'on clique dessus
   return ingredientsArray;
 }
@@ -195,7 +195,7 @@ function addIngredient(eventIngredient) {
 function addAppliancesList(recipes) {
   appliancesUl.innerHTML = "";
   appliancesArray = recipes.map((recipe) => {
-    return recipe.appliance.toLowerCase();
+    return recipe.appliance;
   });
   appliancesArray = appliancesArray.filter(
     (e, i) => appliancesArray.indexOf(e) == i
