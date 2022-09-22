@@ -38,7 +38,7 @@ function getRecipes(recipes) {
     // Remplit recipeArray avec toutes les données nécessaires
     return {
       recipe: recipe,
-      ingredients: recipe.ingredients.map(ingredientConstructor),
+      ingredients: recipe.ingredients.map((item) => item.ingredient),
       appliance: recipe.appliance,
       ustensils: recipe.ustensils,
       html: `
@@ -77,10 +77,10 @@ function getRecipes(recipes) {
   return tagArray, tagRecipes;
 }
 
-// Affichage chaque ingrédient dans recipe.ingredient
-function ingredientConstructor(item) {
-  return `${item.ingredient}`;
-}
+// // Affichage chaque ingrédient dans recipe.ingredient
+// function ingredientConstructor(item) {
+//   return `${item.ingredient}`;
+// }
 
 // Affichage des ingrédients dans la card recette
 function getIngredients(item) {
@@ -422,6 +422,7 @@ function searchbarResearch(searchbarInput) {
       addUstensilslist(tagRecipes); // Actualise la liste des ustensiles
     } else {
       recipesContainer.innerHTML = recipeHTMLString; // Affichage de toutes les recettes
+      getRecipes(recipes);
     }
 
     newIngredientsList(recipeArray);
@@ -482,6 +483,7 @@ function removeActive(button) {
   let item = icon.previousElementSibling.innerHTML; // Cible le nom de l'item cliqué
   selectedTags = selectedTags.filter((tag) => tag != item); // Enlève l'item du tableau selectedTags
   removeTag(icon.parentElement, item); // Enlève l'item du tableau des tags de sa catégorie
+  getRecipes(recipes);
   recipeFilter(button, "tag"); // Appelle la fonction de recherche
 }
 
@@ -575,3 +577,4 @@ ustensilsInput.addEventListener("input", ustensilsFilter); //Filtrage des ustens
 chevron[0].addEventListener("click", showIngredientsList); // Affichage des ingrédients au clic sur le bouton
 chevron[1].addEventListener("click", showAppliancesList); // Affichage des appareils au clic sur le bouton
 chevron[2].addEventListener("click", showUstensilsList); // Affichage des ustensiles au clic sur le bouton
+ingredientsInput.addEventListener("click", showIngredientsList); // Affichage des ingrédients au clic sur le bouton
