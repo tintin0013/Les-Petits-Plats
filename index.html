@@ -22,13 +22,12 @@
     <div>
         <form class="form">
             <div class="searchbar">
-                <input type="text" name="search" id="search"
-                    placeholder="Rechercher une recette">
+                <input type="text" name="search" id="search" placeholder="Rechercher une recette">
                 <button type="submit" class="searchbar-button"><i class="fas fa-2x fa-search"></i></button>
             </div>
 
             <div class="search-list">
-                <div id="filters">
+                <div class="filters">
 
                 </div>
 
@@ -36,52 +35,28 @@
                 <div class="cards">
 
                     <!-- Ingrédients -->
-                    <div class="search-card blue">
-                        <div class="search-input">
-                            <input type="text" name="ingredients" id="ingredients" placeholder="Ingrédients">
+                    <div class="search-card blue ingredients-card">
+                        <div class="ingredients-input">
+                            <input class="ingredients-research-bar" type="text" name="ingredients" id="ingredients"
+                                placeholder="Ingrédients">
                             <div class="button-search-card">
-                                <i class="fas fa-chevron-down"></i>
+                                <i class="fas fa-chevron-down ingredients-search-icon"></i>
                             </div>
                         </div>
                         <div id="ingredients-container" class="list-container">
                             <ul id="ingredients-ul">
-                                <!-- <li class="ingredients-result">Lait de coco</li>
-                                <li class="ingredients-result">Jus de citron</li>
-                                <li class="ingredients-result">Crèmes de coco</li>
-                                <li class="ingredients-result">Sucre</li>
-                                <li class="ingredients-result">Glaçons</li>
-                                <li class="ingredients-result">Thon Rouge</li>
-                                <li class="ingredients-result">Concombre</li>
-                                <li class="ingredients-result">Tomate</li>
-                                <li class="ingredients-result">Carotte</li>
-                                <li class="ingredients-result">Citron Vert</li>
-                                <li class="ingredients-result">Poulet</li>
-                                <li class="ingredients-result">Coulis de tomate</li>
-                                <li class="ingredients-result">Oignon</li>
-                                <li class="ingredients-result">Poivron rouge</li>
-                                <li class="ingredients-result">Huile d'olive</li>
-                                <li class="ingredients-result">Riz blanc</li>
-                                <li class="ingredients-result">Thon en miettes</li>
-                                <li class="ingredients-result">Oeuf dur</li>
-                                <li class="ingredients-result">Maïs</li>
-                                <li class="ingredients-result">Vinaigrette</li>
-                                <li class="ingredients-result">Pâte feuilletée</li>
-                                <li class="ingredients-result">Thon en miettes</li>
-                                <li class="ingredients-result">Crème fraiche</li>
-                                <li class="ingredients-result">gruyère râpé</li>
-                                <li class="ingredients-result">Moutarde de Dijon</li>
-                                <li class="ingredients-result">Pâte brisée</li>
-                                <li class="ingredients-result">Pomme</li> -->
+
                             </ul>
                         </div>
                     </div>
 
                     <!-- Appareils -->
-                    <div class="search-card green">
-                        <div class="search-input">
-                            <input type="text" name="appareil" id="appareil" placeholder="Appareils">
+                    <div class="search-card green appliances-card">
+                        <div class="appliances-input">
+                            <input class="appliances-research-bar" type="text" name="appareil" id="appareil"
+                                placeholder="Appareils">
                             <div class="button-search-card">
-                                <i class="fas fa-chevron-down"></i>
+                                <i class="fas fa-chevron-down appliances-search-icon"></i>
                             </div>
                         </div>
                         <div id="appliances-container" class="list-container">
@@ -90,11 +65,12 @@
                     </div>
 
                     <!-- Ustensiles -->
-                    <div class="search-card red">
-                        <div class="search-input">
-                            <input type="text" name="ustensiles" id="ustensiles" placeholder="Ustensiles">
+                    <div class="search-card red ustensils-card">
+                        <div class="ustensils-input search-input">
+                            <input class="ustensils-research-bar" type="text" name="ustensiles" id="ustensiles"
+                                placeholder="Ustensiles">
                             <div class="button-search-card">
-                                <i class="fas fa-chevron-down"></i>
+                                <i class="fas fa-chevron-down ustensils-search-icon"></i>
                             </div>
                         </div>
                         <div id="ustensils-container" class="list-container">
@@ -108,109 +84,12 @@
 
     <!-- Recettes -->
     <div class="recipes" id="recipes-container">
-        <!-- <div class="recipe-card">
-            <div class="recipe-img"></div>
-            <div class="recipe-text">
-                <div class="recipe-head">
-                    <h1>limonade de coco</h1>
-                    <span class="time">
-                        <i class="far fa-clock"></i>
-                        "10 min"
-                    </span>
-                </div>
-                <div class="recipe-instructions">
-                    <aside>
-                        <span class="ingredient">Lait de coco</span>: " 400 ml" <br>
-                        <span class="ingredient">Jus de citron</span>: " 2" <br>
-                        <span class="ingredient">Creme de coco</span>: " 2 cuillères a spoupe" <br>
-                        <span class="ingredient">Sucre</span>: " grammes" <br>
-                        <span class="ingredient">Glaçons</span>: " " <br>  
-                    </aside>
-                    <article class="description">
-                        "Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée"
-                    </article>
-                </div>
-            </div>
 
-        </div>
-        <div class="recipe-card">
-            <div class="recipe-img"></div>
-            <div class="recipe-text">
-                <div class="recipe-head">
-                    <h1>limonade de coco</h1>
-                    <span class="time">
-                        <i class="far fa-clock"></i>
-                        "10 min"
-                    </span>
-                </div>
-                <div class="recipe-instructions">
-                    <aside>
-                        <span class="ingredient">Lait de coco</span>: " 400 ml" <br>
-                        <span class="ingredient">Jus de citron</span>: " 2" <br>
-                        <span class="ingredient">Creme de coco</span>: " 2 cuillères a spoupe" <br>
-                        <span class="ingredient">Sucre</span>: " grammes" <br>
-                        <span class="ingredient">Glaçons</span>: " " <br>  
-                    </aside>
-                    <article class="description">
-                        "Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée"
-                    </article>
-                </div>
-            </div>
-
-        </div>
-        <div class="recipe-card">
-            <div class="recipe-img"></div>
-            <div class="recipe-text">
-                <div class="recipe-head">
-                    <h1>limonade de coco</h1>
-                    <span class="time">
-                        <i class="far fa-clock"></i>
-                        "10 min"
-                    </span>
-                </div>
-                <div class="recipe-instructions">
-                    <aside>
-                        <span class="ingredient">Lait de coco</span>: " 400 ml" <br>
-                        <span class="ingredient">Jus de citron</span>: " 2" <br>
-                        <span class="ingredient">Creme de coco</span>: " 2 cuillères a spoupe" <br>
-                        <span class="ingredient">Sucre</span>: " grammes" <br>
-                        <span class="ingredient">Glaçons</span>: " " <br> 
-                    </aside>
-                    <article class="description">
-                        "Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée"
-                    </article>
-                </div>
-            </div>
-
-        </div>
-        <div class="recipe-card">
-            <div class="recipe-img"></div>
-            <div class="recipe-text">
-                <div class="recipe-head">
-                    <h1>limonade de coco</h1>
-                    <span class="time">
-                        <i class="far fa-clock"></i>
-                        "10 min"
-                    </span>
-                </div>
-                <div class="recipe-instructions">
-                    <aside>
-                        <span class="ingredient">Lait de coco</span>: " 400 ml" <br>
-                        <span class="ingredient">Jus de citron</span>: " 2" <br>
-                        <span class="ingredient">Creme de coco</span>: " 2 cuillères a spoupe" <br>
-                        <span class="ingredient">Sucre</span>: " grammes" <br>
-                        <span class="ingredient">Glaçons</span>: " " <br>  
-                    </aside>
-                    <article class="description">
-                        "Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons et le sucre. Mixer jusqu'à avoir la consistence désirée"
-                    </article>
-                </div>
-            </div>
-
-        </div> -->
     </div>
+    <div class="no-recipe hidden">Aucune recette ne correspond à votre critère... Vous pouvez chercher « tarte aux
+        pommes », « poisson », etc.</div>
     <!-- JavaScript -->
-    <script src="./scripts/index.js" type="module"></script>
+    <script src="./scripts/pages/index.js" type="module"></script>
 </body>
 
 </html>
