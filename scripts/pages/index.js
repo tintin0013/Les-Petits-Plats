@@ -7,7 +7,7 @@ class Main {
   constructor() {
     // on initialise les variables
     this.recipes = recipesData.map((recipeData) => new Recipe(recipeData)); // on crée une liste de recettes
-    this.filtreredRecipes = [...this.recipes]; // on crée une liste de recettes filtrées qui est une copie de la liste de recettes
+    this.filteredRecipes = [...this.recipes]; // on crée une liste de recettes filtrées qui est une copie de la liste de recettes
     this.filters = {}; // objet contenant la liste des filtres
     this.selectedItems = {}; // objet contenant la liste des éléments sélectionnés
     this.elementSearch = {}; // objet contenant la  liste des éléments recherchés
@@ -27,24 +27,20 @@ class Main {
       // // console.log(test);
       //  // console.log(document.querySelector(test));
       // on récupère l'icône de recherche et on ajoute un écouteur d'événement
+      let card = document.querySelector(`.${element}-card`);
       document
         .querySelector(`.${element}-search-icon`)
         .addEventListener("click", (e) => {
           // si la carte de filtre contient la classe active, on supprime la classe active
-          if (
-            document
-              .querySelector(`.${element}-card`)
-              .classList.contains("active")
-          ) {
-            document
-              .querySelector(`.${element}-card`)
-              .classList.remove("active");
-          }
-          // sinon on ajoute la classe active et on affiche la liste des filtres
-          else {
-            document.querySelector(`.${element}-card`).classList.add("active");
-            this.displayFilters(element);
-          }
+          card.classList.toggle("active");
+          // if (card.classList.contains("active")) {
+          //   card.classList.remove("active");
+          // }
+          // // sinon on ajoute la classe active et on affiche la liste des filtres
+          // else {
+          //   card.classList.add("active");
+          this.displayFilters(element);
+          // }
         });
     });
 
@@ -52,7 +48,7 @@ class Main {
 
     // on récupère la valeur de la barre de recherche et si la recherche fait moins de 3 caractères, on ne filtre pas
     document.getElementById("search").addEventListener("input", (e) => {
-      this.searchIput = e.target.value.length >= 3 ? e.target.value : "";
+      this.searchInput = e.target.value.length >= 3 ? e.target.value : "";
       this.filterRecipes(); // on filtre les recettes
       TYPE_FILTER.forEach((element) => this.displayFilters(element)); // on affiche la liste des filtres
     });
@@ -69,14 +65,14 @@ class Main {
   displayRecipes() {
     const recipesContainer = document.querySelector(".recipes");
     recipesContainer.innerHTML = "";
-    this.filtreredRecipes.forEach((recipe) => {
+    this.filteredRecipes.forEach((recipe) => {
       recipesContainer.appendChild(recipe.getCard());
     });
   }
 
   // ** filtre des recettes **
+  // ** Récupération des données + création de la liste de données du filtre
 
-  // Récupération des données + création de la liste de données du filtre
   // on récupère la liste des filtres
   // on vide la liste des filtres
   // pour chaque recette filtrée
@@ -87,9 +83,9 @@ class Main {
   displayFilters(typeFilter) {
     //  // console.log(`.${typeFilter}-ul`);
     //  // console.log(document.querySelector(`#${typeFilter}-ul`));
-    let filterUl = document.querySelector(`#${typeFilter}-ul`);
+    const filterUl = document.querySelector(`#${typeFilter}-ul`);
     this.filters[typeFilter] = [];
-    this.filtreredRecipes.forEach((recipe) => {
+    this.filteredRecipes.forEach((recipe) => {
       const elements = recipe.extractElements(typeFilter);
       elements.forEach((element) => {
         if (!this.filters[typeFilter].includes(element)) {
@@ -101,14 +97,13 @@ class Main {
     // on filtre la liste des filtres en fonction de la recherche
     // on retourne l'élément en minuscule et  on ajoute l'élément à la liste des filtres si l'élément n'est pas dans la liste des éléments sélectionnés
     this.filters[typeFilter].sort();
-    this.filters[typeFilter] = this.filters[typeFilter].filter((f) => {
-      return (
+    this.filters[typeFilter] = this.filters[typeFilter].filter(
+      (f) =>
         f
           .toLowerCase()
           .includes(this.elementSearch[typeFilter].toLowerCase()) &&
         !this.selectedItems[typeFilter].includes(f)
-      );
-    });
+    );
     //  // console.log(filterUl);
     // on vide la liste des filtres
     // pour chaque élément de la liste des filtres
@@ -158,6 +153,7 @@ class Main {
       );
       this.filterRecipes();
     });
+
     document.querySelector(`.filters`).appendChild(div);
   }
 
@@ -187,19 +183,20 @@ class Main {
   // on affiche le message "pas de recette"
   // sinon on cache le message "pas de recette"
   filterRecipes() {
-    this.filtreredRecipes = this.recipes.filter((recipe) =>
+    this.filteredRecipes = this.recipes.filter((recipe) =>
       recipe.matchingAllFilters(
         ...Object.values(this.selectedItems),
-        this.searchIput
+        this.searchInput
       )
     );
     this.displayRecipes();
 
-    if (this.filtreredRecipes.length === 0) {
-      document.querySelector(".no-recipe").classList.remove("hidden");
-    } else {
-      document.querySelector(".no-recipe").classList.add("hidden");
+    if (this.filteredRecipes.length === 0) {
+      document.querySelector(".no-recipe").classList.toggle("hidden");
     }
+    //  else {
+    //   document.querySelector(".no-recipe").classList.add("hidden");
+    // }
   }
 }
 

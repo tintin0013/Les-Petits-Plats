@@ -70,9 +70,10 @@ export default class Recipe {
       // on sort du switch
       case "ustensils":
         // // console.log(this);
-        this.ustensils.forEach((element) => {
-          elements.push(element);
-        });
+        elements = [...this.ustensils];
+        // this.ustensils.forEach((element) => {
+        //   elements.push(element);
+        // });
         break;
       default:
         break;
@@ -106,12 +107,15 @@ export default class Recipe {
     // on cherche l'appareil dans la recette
     // si l'appareil existe
     // on retourne true
-    let applianceMatching = true;
-    appliance.forEach((appli) => {
-      const matchingCurrentAppliance = this.appliance.includes(appli);
-      applianceMatching = !!matchingCurrentAppliance && applianceMatching;
-    });
-    return applianceMatching;
+
+    // let applianceMatching = true;
+    // appliance.forEach((appli) => {
+    //   const matchingCurrentAppliance = this.appliance.includes(appli);
+    //   applianceMatching = !!matchingCurrentAppliance && applianceMatching;
+    // });
+    // return applianceMatching;
+    // console.log(appliance);
+    return !appliance.length || appliance.includes(this.appliance);
   }
 
   // ** filtrage des ustensiles **
@@ -147,17 +151,20 @@ export default class Recipe {
       matchingDescription = this.description // on cherche la description de la recette
         .toLowerCase()
         .includes(inputSearch.toLowerCase());
-      for (let index = 0; index < this.ingredients.length; index++) {
-        // pour chaque ingrédient
-        if (
-          // si l'ingrédient contient la recherche
-          this.ingredients[index].ingredient // on cherche l'ingrédient
-            .toLowerCase() // en minuscule
-            .includes(inputSearch.toLowerCase()) // qui contient la recherche
-        ) {
-          matchingIngredients = true; // on retourne true
-        }
-      }
+      matchingIngredients = this.ingredients.find((ing) =>
+        ing.ingredient.toLowerCase().includes(inputSearch.toLowerCase())
+      );
+      // for (let index = 0; index < this.ingredients.length; index++) {
+      //   // pour chaque ingrédient
+      //   if (
+      //     // si l'ingrédient contient la recherche
+      //     this.ingredients[index].ingredient // on cherche l'ingrédient
+      //       .toLowerCase() // en minuscule
+      //       .includes(inputSearch.toLowerCase()) // qui contient la recherche
+      //   ) {
+      //     matchingIngredients = true; // on retourne true
+      //   }
+      // }
       matchingInput =
         matchingName || matchingDescription || matchingIngredients; // si le nom, la description ou l'ingrédient contient la recherche on retourne true
     }
