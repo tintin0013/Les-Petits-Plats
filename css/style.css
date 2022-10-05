@@ -58,6 +58,11 @@ header img {
 }
 
 /* Div des filtres */
+
+.filters {
+    display: flex;
+}
+
 .item-filters {
     display: none;
     padding: 10px 20px;
@@ -171,6 +176,7 @@ header img {
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .appliances-filter,

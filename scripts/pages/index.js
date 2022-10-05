@@ -179,9 +179,7 @@ class Main {
   // on récupère les éléments de la recette
   // on vérifie que les éléments de la recette correspondent aux éléments sélectionnés
   // on affiche les recettes filtrées
-  // si il n'y a pas de recette filtrée
-  // on affiche le message "pas de recette"
-  // sinon on cache le message "pas de recette"
+
   filterRecipes() {
     this.filteredRecipes = this.recipes.filter((recipe) =>
       recipe.matchingAllFilters(
@@ -191,6 +189,9 @@ class Main {
     );
     this.displayRecipes();
 
+    // si il n'y a pas de recette filtrée
+    // on affiche le message "pas de recette"
+    // sinon on cache le message "pas de recette"
     if (this.filteredRecipes.length === 0) {
       document.querySelector(".no-recipe").classList.toggle("hidden");
     }
