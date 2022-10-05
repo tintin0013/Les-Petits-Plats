@@ -27,7 +27,7 @@
             </div>
 
             <div class="search-list">
-                <div id="filters">
+                <div class="filters">
 
                 </div>
 
@@ -35,11 +35,12 @@
                 <div class="cards">
 
                     <!-- Ingrédients -->
-                    <div class="search-card blue">
-                        <div class="search-input">
-                            <input type="text" name="ingredients" id="ingredients" placeholder="Ingrédients">
+                    <div class="search-card blue ingredients-card">
+                        <div class="ingredients-input">
+                            <input class="ingredients-research-bar" type="text" name="ingredients" id="ingredients"
+                                placeholder="Ingrédients">
                             <div class="button-search-card">
-                                <i class="fas fa-chevron-down"></i>
+                                <i class="fas fa-chevron-down ingredients-search-icon"></i>
                             </div>
                         </div>
                         <div id="ingredients-container" class="list-container">
@@ -50,11 +51,12 @@
                     </div>
 
                     <!-- Appareils -->
-                    <div class="search-card green">
-                        <div class="search-input">
-                            <input type="text" name="appareil" id="appareil" placeholder="Appareils">
+                    <div class="search-card green appliances-card">
+                        <div class="appliances-input">
+                            <input class="appliances-research-bar" type="text" name="appareil" id="appareil"
+                                placeholder="Appareils">
                             <div class="button-search-card">
-                                <i class="fas fa-chevron-down"></i>
+                                <i class="fas fa-chevron-down appliances-search-icon"></i>
                             </div>
                         </div>
                         <div id="appliances-container" class="list-container">
@@ -63,11 +65,12 @@
                     </div>
 
                     <!-- Ustensiles -->
-                    <div class="search-card red">
-                        <div class="search-input">
-                            <input type="text" name="ustensiles" id="ustensiles" placeholder="Ustensiles">
+                    <div class="search-card red ustensils-card">
+                        <div class="ustensils-input search-input">
+                            <input class="ustensils-research-bar" type="text" name="ustensiles" id="ustensiles"
+                                placeholder="Ustensiles">
                             <div class="button-search-card">
-                                <i class="fas fa-chevron-down"></i>
+                                <i class="fas fa-chevron-down ustensils-search-icon"></i>
                             </div>
                         </div>
                         <div id="ustensils-container" class="list-container">
@@ -83,8 +86,10 @@
     <div class="recipes" id="recipes-container">
 
     </div>
+    <div class="no-recipe hidden">Aucune recette ne correspond à votre critère... Vous pouvez chercher « tarte aux
+        pommes », « poisson », etc.</div>
     <!-- JavaScript -->
-    <script src="./scripts/index.js" type="module"></script>
+    <script src="./scripts/pages/index.js" type="module"></script>
 </body>
 
 </html>

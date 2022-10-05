@@ -1,4 +1,4 @@
-export const recipes = [
+export default [
   {
     id: 1,
     name: "Limonade de Coco",
