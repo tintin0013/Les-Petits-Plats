@@ -24,23 +24,38 @@ export default class Recipe {
     card.querySelector(".time").innerText = this.time + " min"; // ajout du temps de préparation
     card.querySelector(".description").innerText = this.description; // ajout de la description
 
-    this.ingredients.forEach((ingredient) => {
-      // pour chaque ingrédient
-      // création d'une liste
-      // ajout du template de l'ingrédient
-      // ajout de l'ingrédient
-      // ajout de la quantité si elle existe
-      // ajout de l'unité si elle existe
-      // ajout de la liste dans la carte de recette
+    for (let i = 0; i < this.ingredients.length; i++) {
       const li = document.createElement("li");
       li.innerHTML = templateIngredient;
-      li.querySelector(".ingredient").innerText = ingredient.ingredient;
+      li.querySelector(".ingredient").innerText =
+        this.ingredients[i].ingredient;
       li.querySelector(".quantity").innerText =
-        ingredient.quantity !== undefined ? `: ${ingredient.quantity}` : "";
+        this.ingredients[i].quantity !== undefined
+          ? this.ingredients[i].quantity
+          : "";
       li.querySelector(".unit").innerText =
-        ingredient.unit !== undefined ? ` ${ingredient.unit}` : "";
+        this.ingredients[i].unit !== undefined ? this.ingredients[i].unit : "";
       card.querySelector(".list-ingredients").appendChild(li);
-    });
+    }
+    // pour chaque ingrédient
+
+    // this.ingredients.forEach((ingredient) => {
+    //   // pour chaque ingrédient
+    //   // création d'une liste
+    //   // ajout du template de l'ingrédient
+    //   // ajout de l'ingrédient
+    //   // ajout de la quantité si elle existe
+    //   // ajout de l'unité si elle existe
+    //   // ajout de la liste dans la carte de recette
+    //   const li = document.createElement("li");
+    //   li.innerHTML = templateIngredient;
+    //   li.querySelector(".ingredient").innerText = ingredient.ingredient;
+    //   li.querySelector(".quantity").innerText =
+    //     ingredient.quantity !== undefined ? `: ${ingredient.quantity}` : "";
+    //   li.querySelector(".unit").innerText =
+    //     ingredient.unit !== undefined ? ` ${ingredient.unit}` : "";
+    //   card.querySelector(".list-ingredients").appendChild(li);
+    // });
     return card; // retourne la carte de recette
   }
 
@@ -90,12 +105,18 @@ export default class Recipe {
     // si l'ingrédient existe
     // on retourne true
     let ingredientsMatching = true;
-    ingredients.forEach((ingredient) => {
-      const matchingCurrentIngredient = this.ingredients.find(
-        (i) => i.ingredient === ingredient
+    for (let i = 0; i < ingredients.length; i++) {
+      const matchingCurrentIngredient = this.ingredients.some(
+        (ingredient) => ingredient.ingredient === ingredients[i]
       );
       ingredientsMatching = !!matchingCurrentIngredient && ingredientsMatching;
-    });
+    }
+    // ingredients.forEach((ingredient) => {
+    //   const matchingCurrentIngredient = this.ingredients.find(
+    //     (i) => i.ingredient === ingredient
+    //   );
+    //   ingredientsMatching = !!matchingCurrentIngredient && ingredientsMatching;
+    // });
     return ingredientsMatching;
   }
 
@@ -127,10 +148,16 @@ export default class Recipe {
     // si l'ustensile existe
     // on retourne true
     let ustensilsMatching = true;
-    ustensils.forEach((ustensils) => {
-      const matchingCurrentUstensils = this.ustensils.includes(ustensils);
-      ustensilsMatching = !!matchingCurrentUstensils && ustensilsMatching;
-    });
+    for (let i = 0; i < ustensils.length; i++) {
+      const matchingCurrentUstensil = this.ustensils.some(
+        (ustensil) => ustensil === ustensils[i]
+      );
+      ustensilsMatching = !!matchingCurrentUstensil && ustensilsMatching;
+    }
+    // ustensils.forEach((ustensils) => {
+    //   const matchingCurrentUstensils = this.ustensils.includes(ustensils);
+    //   ustensilsMatching = !!matchingCurrentUstensils && ustensilsMatching;
+    // });
     return ustensilsMatching;
   }
 
