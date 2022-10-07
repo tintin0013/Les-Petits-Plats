@@ -143,18 +143,19 @@ class Main {
   createtag(typeFilter, data) {
     //  // const data_class = data.replaceAll(" ", "-");
     const div = document.createElement("div");
+    const filters = document.querySelector(".filters");
     div.innerHTML = templateFilter;
     div.classList.add(`${typeFilter}-filter`);
     div.querySelector(".filter-name").innerText = data;
     div.addEventListener("click", (e) => {
-      document.querySelector(`.filters`).removeChild(div);
+      filters.removeChild(div);
       this.selectedItems[typeFilter] = this.selectedItems[typeFilter].filter(
         (element) => element !== data
       );
       this.filterRecipes();
     });
 
-    document.querySelector(`.filters`).appendChild(div);
+    filters.appendChild(div);
   }
 
   // ** filtrage des recettes **
