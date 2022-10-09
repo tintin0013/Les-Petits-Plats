@@ -20,6 +20,7 @@ input {
 }
 
 /* Supprime la bordure de l'input pendant l'écriture */
+
 input:focus-visible {
     outline: none;
 }
@@ -29,7 +30,6 @@ button {
     background-color: inherit;
     cursor: pointer;
 }
-
 
 header {
     display: flex;
@@ -43,6 +43,7 @@ header img {
 }
 
 /* Barre de recherche */
+
 .searchbar {
     background-color: #E7E7E7;
     width: 100%;
@@ -83,6 +84,7 @@ header img {
 }
 
 /* Container des cards de recherche par ingrédients, appareils, ustensiles */
+
 .cards {
     display: flex;
     gap: 20px;
@@ -91,6 +93,7 @@ header img {
 }
 
 /* Cards de recherche */
+
 .search-card {
     border-radius: 5px;
     color: #FFF;
@@ -160,7 +163,6 @@ header img {
     display: none;
 }
 
-
 .ingredients-filter ,
 .appliances-filter ,
 .ustensils-filter {
@@ -213,6 +215,7 @@ header img {
 }
 
 /* Div qui contient les cards de recettes */
+
 #recipes-container {
     margin-top: 2rem;
     display: grid;
@@ -222,6 +225,7 @@ header img {
 }
 
 /* Cards de recettes */
+
 .recipe-card {
     display: flex;
     flex-direction: column;
@@ -251,6 +255,7 @@ header img {
 }
 
 /* Nom de la recette */
+
 .recipe-card h1 {
     padding: 0;
     margin: 0;
@@ -259,6 +264,7 @@ header img {
 }
 
 /* Temps */
+
 .recipe-card .time {
     font-weight: 700;
 }
@@ -297,9 +303,6 @@ header img {
 }
 
 /* Description */
-
-
-
 
 .list-ingredients li :nth-child(1) {
     font-weight: 700;

@@ -23,39 +23,20 @@ export default class Recipe {
     card.querySelector("h1").innerText = this.name; // ajout du nom de la recette
     card.querySelector(".time").innerText = this.time + " min"; // ajout du temps de préparation
     card.querySelector(".description").innerText = this.description; // ajout de la description
-
     for (let i = 0; i < this.ingredients.length; i++) {
-      const li = document.createElement("li");
-      li.innerHTML = templateIngredient;
-      li.querySelector(".ingredient").innerText =
+      // pour chaque ingrédient
+      const li = document.createElement("li"); // création d'une liste
+      li.innerHTML = templateIngredient; // ajout du template de l'ingrédient
+      li.querySelector(".ingredient").innerText = // ajout de l'ingrédient
         this.ingredients[i].ingredient;
-      li.querySelector(".quantity").innerText =
+      li.querySelector(".quantity").innerText = // ajout de la quantité si elle existe
         this.ingredients[i].quantity !== undefined
           ? this.ingredients[i].quantity
           : "";
-      li.querySelector(".unit").innerText =
+      li.querySelector(".unit").innerText = // ajout de l'unité si elle existe
         this.ingredients[i].unit !== undefined ? this.ingredients[i].unit : "";
-      card.querySelector(".list-ingredients").appendChild(li);
+      card.querySelector(".list-ingredients").appendChild(li); // ajout de la liste dans la carte de recette
     }
-    // pour chaque ingrédient
-
-    // this.ingredients.forEach((ingredient) => {
-    //   // pour chaque ingrédient
-    //   // création d'une liste
-    //   // ajout du template de l'ingrédient
-    //   // ajout de l'ingrédient
-    //   // ajout de la quantité si elle existe
-    //   // ajout de l'unité si elle existe
-    //   // ajout de la liste dans la carte de recette
-    //   const li = document.createElement("li");
-    //   li.innerHTML = templateIngredient;
-    //   li.querySelector(".ingredient").innerText = ingredient.ingredient;
-    //   li.querySelector(".quantity").innerText =
-    //     ingredient.quantity !== undefined ? `: ${ingredient.quantity}` : "";
-    //   li.querySelector(".unit").innerText =
-    //     ingredient.unit !== undefined ? ` ${ingredient.unit}` : "";
-    //   card.querySelector(".list-ingredients").appendChild(li);
-    // });
     return card; // retourne la carte de recette
   }
 
@@ -67,29 +48,18 @@ export default class Recipe {
     switch (
       typeElement // switch pour les 3 types d'éléments
     ) {
-      // si typeElement = ingredients
-      // on récupère les ingrédients
-      // on sort du switch
-      case "ingredients":
-        elements = this.ingredients.map((ingredient) => ingredient.ingredient);
-        break;
-      // si typeElement = appliances
-      // on récupère l'appareil
-      // on sort du switch
-      case "appliances":
-        elements.push(this.appliance);
-        break;
-      // si typeElement = ustensils
-      // pour chaque ustensile
-      // on récupère l'ustensile
-      // on sort du switch
-      case "ustensils":
-        // // console.log(this);
-        elements = [...this.ustensils];
-        // this.ustensils.forEach((element) => {
-        //   elements.push(element);
-        // });
-        break;
+      case "ingredients": // si typeElement = ingredients
+        for (let i = 0; i < this.ingredients.length; i++) {
+          // pour chaque ingrédient
+          elements.push(this.ingredients[i].ingredient); // on ajoute l'ingrédient dans le tableau
+        }
+        break; // on sort du switch
+      case "appliances": // si typeElement = appliances
+        elements.push(this.appliance); // on ajoute l'appareil dans le tableau
+        break; // on sort du switch
+      case "ustensils": // si typeElement = ustensils
+        elements = [...this.ustensils]; // on ajoute les ustensiles dans le tableau
+        break; // on sort du switch
       default:
         break;
     }
@@ -106,36 +76,24 @@ export default class Recipe {
     // on retourne true
     let ingredientsMatching = true;
     for (let i = 0; i < ingredients.length; i++) {
-      const matchingCurrentIngredient = this.ingredients.some(
-        (ingredient) => ingredient.ingredient === ingredients[i]
-      );
-      ingredientsMatching = !!matchingCurrentIngredient && ingredientsMatching;
+      let matchingCurrentIngredients = false;
+      for (let j = 0; j < this.ingredients.length; j++) {
+        if (this.ingredients[j].ingredient === ingredients[i]) {
+          matchingCurrentIngredients = true;
+        }
+      }
+      if (!matchingCurrentIngredients) {
+        // si l'ingrédient n'existe pas
+        ingredientsMatching = false; // on retourne false
+      }
     }
-    // ingredients.forEach((ingredient) => {
-    //   const matchingCurrentIngredient = this.ingredients.find(
-    //     (i) => i.ingredient === ingredient
-    //   );
-    //   ingredientsMatching = !!matchingCurrentIngredient && ingredientsMatching;
-    // });
     return ingredientsMatching;
   }
 
   // ** filtrage des appareils **
 
   filterAppliance(appliance) {
-    // création d'une variable qui vaut true
-    // pour chaque appareil
-    // on cherche l'appareil dans la recette
-    // si l'appareil existe
-    // on retourne true
-
-    // let applianceMatching = true;
-    // appliance.forEach((appli) => {
-    //   const matchingCurrentAppliance = this.appliance.includes(appli);
-    //   applianceMatching = !!matchingCurrentAppliance && applianceMatching;
-    // });
-    // return applianceMatching;
-    // console.log(appliance);
+    // si appliance est vide ou si appliance est dans la recette on retourne true
     return !appliance.length || appliance.includes(this.appliance);
   }
 
@@ -149,15 +107,17 @@ export default class Recipe {
     // on retourne true
     let ustensilsMatching = true;
     for (let i = 0; i < ustensils.length; i++) {
-      const matchingCurrentUstensil = this.ustensils.some(
-        (ustensil) => ustensil === ustensils[i]
-      );
-      ustensilsMatching = !!matchingCurrentUstensil && ustensilsMatching;
+      let matchingCurrentUstensils = false;
+      for (let j = 0; j < this.ustensils.length; j++) {
+        if (this.ustensils[j] === ustensils[i]) {
+          matchingCurrentUstensils = true;
+        }
+      }
+      if (!matchingCurrentUstensils) {
+        // si l'ustensile n'existe pas
+        ustensilsMatching = false; // on retourne false
+      }
     }
-    // ustensils.forEach((ustensils) => {
-    //   const matchingCurrentUstensils = this.ustensils.includes(ustensils);
-    //   ustensilsMatching = !!matchingCurrentUstensils && ustensilsMatching;
-    // });
     return ustensilsMatching;
   }
 
@@ -178,9 +138,6 @@ export default class Recipe {
       matchingDescription = this.description // on cherche la description de la recette
         .toLowerCase()
         .includes(inputSearch.toLowerCase());
-      //   matchingIngredients = this.ingredients.find((ing) =>
-      //     ing.ingredient.toLowerCase().includes(inputSearch.toLowerCase())
-      //   );
       for (let index = 0; index < this.ingredients.length; index++) {
         // pour chaque ingrédient
         if (
@@ -202,14 +159,10 @@ export default class Recipe {
   // sinon on affiche les recettes qui correspondent à la recherche
   matchingAllFilters(ingredients, appliance, ustensils, inputSearch) {
     // filtre les recettes
-    // on filtre les ingrédients
-    // on filtre les appareils
-    // on filtre les ustensiles
-    // on filtre la recherche
-    const matchingIngredients = this.filterIngredients(ingredients);
-    const matchingAppliance = this.filterAppliance(appliance);
-    const matchingUstensils = this.filterUstensils(ustensils);
-    const matchingInput = this.inputResearch(inputSearch);
+    const matchingIngredients = this.filterIngredients(ingredients); // on filtre les ingrédients
+    const matchingAppliance = this.filterAppliance(appliance); // on filtre les appareils
+    const matchingUstensils = this.filterUstensils(ustensils); // on filtre les ustensiles
+    const matchingInput = this.inputResearch(inputSearch); // on filtre la recherche
     // si les ingrédients, les appareils, les ustensiles et la recherche correspondent on retourne true
     return (
       matchingIngredients &&
