@@ -58,7 +58,11 @@ export default class Recipe {
         elements.push(this.appliance); // on ajoute l'appareil dans le tableau
         break; // on sort du switch
       case "ustensils": // si typeElement = ustensils
-        elements = [...this.ustensils]; // on ajoute les ustensiles dans le tableau
+        for (let i = 0; i < this.ustensils.length; i++) {
+          // pour chaque ustensile
+          elements.push(this.ustensils[i]); // on ajoute l'ustensile dans le tableau
+        }
+        // elements = [...this.ustensils]; // on ajoute les ustensiles dans le tableau
         break; // on sort du switch
       default:
         break;
